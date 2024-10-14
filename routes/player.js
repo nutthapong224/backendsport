@@ -37,6 +37,8 @@ router.get("/", async (req, res) => {
   }
 });
 
+
+
 router.get("/search", async (req, res) => {
   const { fname, lname, campus, sporttypes } = req.query; // Include sporttypes in the destructuring
 
@@ -45,12 +47,7 @@ router.get("/search", async (req, res) => {
       SELECT * FROM players
       WHERE fname LIKE ? AND lname LIKE ? AND campus = ? AND sporttypes = ?
     `;
-    const values = [
-      `%${fname}%`,
-      `%${lname}%`,
-      campus,
-      sporttypes, 
-    ];
+    const values = [`%${fname}%`, `%${lname}%`, campus, sporttypes];
 
     const [rows] = await db.query(query, values);
     res.status(200).json(rows); // Ensure this is an array
@@ -60,6 +57,8 @@ router.get("/search", async (req, res) => {
       .status(500)
       .json({ message: "Error searching players", error: err.message });
   }
-});
+}); 
+
+
 
 module.exports = router;

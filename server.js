@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const playerRoutes = require("./routes/player");
+const playerRoutes = require("./routes/player"); 
+const playersRoutes = require("./routes/players")
 const coachRoutes = require("./routes/coach");
 const titleRoutes = require("./routes/title");
 const campusRoutes = require("./routes/campus");
@@ -28,7 +29,8 @@ if (cluster.isMaster) {
   app.use(bodyParser.json({ limit: '10mb' }));
 
   // Routes
-  app.use("/api/players", playerRoutes);
+  app.use("/api/players", playerRoutes); 
+   app.use("/api/player", playersRoutes);
   app.use("/api/coaches", coachRoutes);
   app.use("/api/titles", titleRoutes);
   app.use("/api/campuses", campusRoutes);
