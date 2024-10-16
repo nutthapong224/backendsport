@@ -5,7 +5,8 @@ const playersRoutes = require("./routes/players")
 const coachRoutes = require("./routes/coach");
 const titleRoutes = require("./routes/title");
 const campusRoutes = require("./routes/campus");
-const sportTypesRouter = require("./routes/sportypes");
+const sportTypesRouter = require("./routes/sportypes"); 
+const adminRoutes  =require("./routes/admin")
 const cors = require("cors");
 const compression = require("compression");
 const cluster = require('cluster');
@@ -34,7 +35,8 @@ if (cluster.isMaster) {
   app.use("/api/coaches", coachRoutes);
   app.use("/api/titles", titleRoutes);
   app.use("/api/campuses", campusRoutes);
-  app.use("/api/sporttypes", sportTypesRouter);
+  app.use("/api/sporttypes", sportTypesRouter); 
+    app.use("/api/admin", adminRoutes);
 
   app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
