@@ -48,13 +48,9 @@ build/
 tmp/
 temp/
 
-# Docker-related logs
-.docker/
+
 
 # Debug logs from the debugger
 npm-debug.log
 yarn-debug.log
 
-# Ignore Docker configuration files
-Dockerfile
-docker-compose.yml
